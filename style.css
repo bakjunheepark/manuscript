@@ -4,7 +4,7 @@
 
    https://www.figma.com/design/6mdBA2msIxKMGs2rNW8a4k/Jun?node-id=46-3&p=f&t=ueajkXSObVfLHcDE-0
 
-   Since I do not know how lining the page like box shape works,
+   Since I do not know how lining the page like Mondrian's aesthetic grid works,
    I worked mostly with color and font of the typography.
    ========================================================================== */
 
@@ -173,8 +173,7 @@ h3 + p::first-letter {
 
 /* --------------------------------------------------------------------------
    Section headings
-   A heavy underline stands in for Mondrian’s black rule, and the colour
-   rotates red / blue / yellow down the page using :nth-of-type.
+   A heavy underline stands in for Mondrian’s line but with rotating colour.
 -------------------------------------------------------------------------- */
 
 h3::before {
@@ -207,7 +206,7 @@ h3 {
 /* --------------------------------------------------------------------------
    My responses
    Hollis is black. I am blue, and every response is flagged with a yellow bar.
-   -------------------------------------------------------------------------- */
+-------------------------------------------------------------------------- */
 
 aside {
     font-size: 0.95rem;
@@ -237,7 +236,7 @@ aside strong {
 
 /* --------------------------------------------------------------------------
    For the quotes, decided to experiment with red ""
-   -------------------------------------------------------------------------- */
+-------------------------------------------------------------------------- */
 
 blockquote {
     font-size: 1.6rem;
@@ -269,7 +268,7 @@ blockquote cite {
 
 /* --------------------------------------------------------------------------
    Details
-   -------------------------------------------------------------------------- */
+-------------------------------------------------------------------------- */
 
 details {
     font-size: 0.95rem;
@@ -289,7 +288,7 @@ summary:hover {
 
 /* --------------------------------------------------------------------------
    Appendix lists
-   -------------------------------------------------------------------------- */
+-------------------------------------------------------------------------- */
 
 dt {
     font-weight: bold;
