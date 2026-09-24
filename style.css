@@ -1,0 +1,328 @@
+/* ==========================================================================
+   Among my three directions, I chose to move forward with the Mondrian
+   inspired style.
+
+   https://www.figma.com/design/6mdBA2msIxKMGs2rNW8a4k/Jun?node-id=46-3&p=f&t=ueajkXSObVfLHcDE-0
+
+   Since I do not know how lining the page like box shape works,
+   I worked mostly with color and font of the typography.
+   ========================================================================== */
+
+body {
+    background-color: hsl(45, 100%, 98%);
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    padding: 8rem 8rem;
+    color: hsl(0, 0%, 5%);
+}
+
+*** {
+	margin-block-start: 3rem;
+}
+
+em {
+	color: hsl(355, 90%, 45%);
+	font-family: 'Alpino', sans-serif;
+    font-size: 1.2rem;
+	font-weight: 400;
+}
+
+time {
+	color: hsl(48, 71%, 52%);
+}
+
+cite {
+	color: hsl(210, 100%, 32%);
+}
+
+strong {
+    font-weight: bold;
+}
+
+a {
+    color: hsl(210, 100%, 32%);
+    text-decoration: underline;
+    text-decoration-thickness: 0.15em;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: hsl(355, 90%, 45%);
+}
+
+/* --------------------------------------------------------------------------
+   I had a lot of trouble with placing popover at the place that does not
+   block other text. While not in the lesson, I found out about
+   inset & max-width to figure it out. However, I had to test every number
+   manually to see which poisition the popover would actually not block my other
+   texts so I'm wondering if there is a better way to do it.
+-------------------------------------------------------------------------- */
+
+button::before {
+    content: '● ●';
+	font-size: 1.5rem;
+    color: hsl(48, 100%, 50%);
+	letter-spacing: 0.25;
+}
+
+button {
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(355, 90%, 45%);
+}
+
+[popover] {
+    inset: auto 10rem 20rem auto;
+    max-width: 15rem;
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.95rem;
+	line-height: 1.0;
+    color: hsl(355, 90%, 45%);
+}
+
+mark {
+    color: hsl(45, 89%, 58%);
+}
+
+p {
+    margin-bottom: 1.2em;
+    text-align: justify;
+}
+
+/* --------------------------------------------------------------------------
+Experimented with background color to make the webpage closer to my
+design from figma but not sure...
+
+.highlight {
+	background-color: rgb(253, 236, 45);
+}
+-------------------------------------------------------------------------- */
+
+
+/* --------------------------------------------------------------------------
+   For the 'The Modernist Grid' & 'Appendix' at the end
+-------------------------------------------------------------------------- */
+
+h2 {
+	font-family: 'Gambarino', serif;
+	font-size: 1.3rem;
+	font-weight:bold;
+	line-height: 2;
+	letter-spacing: -0.02em;
+	color: hsl(48, 100%, 50%);
+}
+
+h2 span {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-style:normal;
+    letter-spacing: 0.2em;
+    color: hsl(0, 0%, 5%);
+}
+
+/* --------------------------------------------------------------------------
+   Title
+   -------------------------------------------------------------------------- */
+
+h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+h1 cite {
+    font-family: 'Archivo', sans-serif;
+    color: hsl(355, 90%, 45%);
+}
+
+/* Subtitles, inside each hgroup. */
+hgroup p {
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-indent: 0;
+}
+
+.course {
+	text-transform: none;
+	letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------------------
+   For the article
+-------------------------------------------------------------------------- */
+
+h3 + p {
+    margin-top: 1.5rem;
+}
+
+h3 + p::first-letter {
+    font-size: 2.5rem;
+    line-height: 1;
+    font-weight: bold;
+    color: hsl(355, 90%, 45%);
+}
+
+/* --------------------------------------------------------------------------
+   Section headings
+   A heavy underline stands in for Mondrian’s black rule, and the colour
+   rotates red / blue / yellow down the page using :nth-of-type.
+-------------------------------------------------------------------------- */
+
+h3::before {
+    content: '█  ';
+}
+
+h3 {
+    font-size: 0.85rem;
+    font-weight: bold;
+    line-height: 3;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-thickness: 0.5em;
+    text-underline-offset: 0.8em;
+}
+
+.red {
+	color: hsl(355, 90%, 45%);
+}
+
+.blue {
+	color: hsl(210, 100%, 32%);
+}
+
+.yellow {
+	color: hsl(48, 100%, 50%);
+}
+
+/* --------------------------------------------------------------------------
+   My responses
+   Hollis is black. I am blue, and every response is flagged with a yellow bar.
+   -------------------------------------------------------------------------- */
+
+aside {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: hsl(210, 100%, 32%);
+}
+
+aside h4::before {
+    content: '█   ';
+    color: hsl(48, 100%, 50%);
+    letter-spacing: 0.25;
+}
+
+aside h4 {
+    font-size: 0.95rem;
+    font-weight: bold;
+    line-height: 3;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: hsl(210, 100%, 32%);
+}
+
+aside em,
+aside strong {
+    color: hsl(355, 90%, 45%);
+}
+
+/* --------------------------------------------------------------------------
+   For the quotes, decided to experiment with red ""
+   -------------------------------------------------------------------------- */
+
+blockquote {
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 1.25;
+}
+
+blockquote p::before {
+    content: '“';
+    color: hsl(355, 90%, 45%);
+}
+
+blockquote p::after {
+    content: '”';
+    color: hsl(355, 90%, 45%);
+}
+
+blockquote p:last-child::before,
+blockquote p:last-child::after {
+    content: '';
+}
+
+blockquote cite {
+    font-size: 1rem;
+	font-family: 'Cormorant Garmond', serif;
+	text-align: middle;
+    color: hsl(0, 0%, 0%);
+}
+
+/* --------------------------------------------------------------------------
+   Details
+   -------------------------------------------------------------------------- */
+
+details {
+    font-size: 0.95rem;
+}
+
+summary {
+    font-size: 0.85rem;
+    font-weight: bold;
+    line-height: 3;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+summary:hover {
+    color: hsl(355, 90%, 45%);
+}
+
+/* --------------------------------------------------------------------------
+   Appendix lists
+   -------------------------------------------------------------------------- */
+
+dt {
+    font-weight: bold;
+    line-height: 2.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: hsl(355, 90%, 45%);
+}
+
+dd {
+    font-size: 0.95rem;
+}
+
+li {
+    line-height: 1.9;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+-------------------------------------------------------------------------- */
+
+footer {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(0, 0%, 40%);
+}
+
+footer a {
+    color: hsl(355, 90%, 45%);
+}
+
+abbr {
+    text-decoration: underline;
+}
