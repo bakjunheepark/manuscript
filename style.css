@@ -75,7 +75,7 @@ button {
 }
 
 [popover] {
-    inset: auto 10rem 20rem auto;
+    inset: auto 10rem 25rem auto;
     max-width: 15rem;
     font-family: 'Archivo', sans-serif;
     font-size: 0.95rem;
