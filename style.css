@@ -218,7 +218,7 @@ h3 {
 	text-transform: uppercase;
 
 	&::before {
-    content: '█  ';
+	content: '█  ';
 	}
 
 	+p {
@@ -257,7 +257,7 @@ aside {
 
 		&::before {
 			content: '█   ';
-    		letter-spacing: 0.25;
+			letter-spacing: 0.25;
 			color: var(--yellow);
 		}
 	}
@@ -269,35 +269,37 @@ yellow background block.
 -------------------------------------------------------------------------- */
 
 blockquote {
-	display: block;
-	background-color: var(--yellow);
 	padding-block: var(--space);
-	padding-inline: 3rem;
+	padding-inline: calc(1.5 * var(--space));
+	background-color: var(--yellow);
 	font-size: 1.3rem;
 	font-weight: bold;
 	line-height: 1.25;
-}
 
-blockquote p::before {
-    content: '“ ';
-    color: var(--red);
-}
+	p {
+		text-align: start;
+	}
 
-blockquote p::after {
-    content: ' ”';
-    color: var(--red);
-}
+	p::before {
+		content: '“ ';
+		color: var(--red);
+	}
 
-blockquote p:last-child::before,
-blockquote p:last-child::after {
-    content: '';
-}
+	p::after {
+		content: ' ”';
+		color: var(--red);
+	}
 
-blockquote cite {
-    font-size: 1.2rem;
-	font-family: 'Cormorant Garamond', serif;
-	text-align: middle;
-    color: var(--blue);
+	p:last-child::before,
+	p:last-child::after {
+		content: '';
+	}
+
+	cite {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 1.2rem;
+		color: var(--blue);
+	}
 }
 
 /* --------------------------------------------------------------------------
@@ -318,7 +320,7 @@ details {
 
 		&::before {
 			content: '█   ';
-    		letter-spacing: 0.25;
+			letter-spacing: 0.25;
 			color: var(--red);
 		}
 
@@ -329,17 +331,17 @@ details {
 }
 
 button::before {
-    content: '█ █  ';
+	content: '█ █  ';
 	font-size: 0.85rem;
-    color: var(--yellow);
+	color: var(--yellow);
 	letter-spacing: 0.25;
 }
 
 button {
-    font-size: 0.95rem;
+	font-size: 0.95rem;
 	font: 'Cormorant Garamond', serif;
-    letter-spacing: 0.2em;
-    color: var(--white);
+	letter-spacing: 0.2em;
+	color: var(--white);
 
 	&:hover {
 			background-color: var(--red);
@@ -375,17 +377,17 @@ main >section{
 }
 
 dt {
-    font-weight: bold;
-    line-height: 1;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    color: var(--red);
+	font-weight: bold;
+	line-height: 1;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-size: 0.85rem;
+	color: var(--red);
 }
 
 dd {
 	margin-block-start: 0.5rem;
-    font-size: 0.95rem;
+	font-size: 0.95rem;
 }
 
 /* --------------------------------------------------------------------------
