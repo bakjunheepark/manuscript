@@ -1,257 +1,291 @@
-/* ==========================================================================
-   Among my three directions, I chose to move forward with the Mondrian
-   inspired style.
+/* --------------------------------------------------------------------------
+Feedback: Units: rem for font sizes and page-level spacing (same value everywhere).
+em for things that should scale with their own text: letter-spacing,
+underlines, paragraph spacing.
 
-   https://www.figma.com/design/6mdBA2msIxKMGs2rNW8a4k/Jun?node-id=46-3&p=f&t=ueajkXSObVfLHcDE-0
+More closer to Mondrian style as boxing is applied: a white ground, heavy black
+lines, and flat planes of red, yellow, and blue.
 
-   Since I do not know how lining the page like Mondrian's aesthetic grid works,
-   I worked mostly with color and font of the typography.
-   ========================================================================== */
+The irony: Hollis says Mondrian's rectangles are purely aesthetic, not structural like a grid,
+so this styling is a contradiction of the text...
+-------------------------------------------------------------------------- */
 
-body {
-    background-color: hsl(45, 100%, 98%);
-    font-family: 'Archivo', sans-serif;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    padding: 8rem 8rem;
-    color: hsl(0, 0%, 5%);
+/* --------------------------------------------------------------------------
+Roots: setting colors, line, spacing
+-------------------------------------------------------------------------- */
+
+:root {
+	--black: hsl(0, 0%, 5%);
+	--white: hsl(45, 100%, 98%);
+	--paper: hsl(0, 0%, 100%);
+	--red: hsl(355, 90%, 45%);
+	--blue: hsl(210, 100%, 32%);
+	--yellow: hsl(48, 100%, 50%);
+
+	--line: 0.6rem;
+
+	--space: 2rem;
 }
 
-*** {
-	margin-block-start: 3rem;
+*+*{
+	margin-block-start: 1.2rem;
+}
+
+/* The body has margin set (only left and rihgt) with black lines on both sides
+Setting it back to 0 lets the red title start at the very top. */
+
+body{
+	inline-size: 46rem;
+	margin-block-start: 0;
+	margin-inline: auto;
+
+	/* thick lining like Mondrain style */
+	border-inline: var(--line)solid var(--black);
+
+	background-color: var(--white);
+	font-family: 'Archivo', sans-serif;
+	font-size: 1.05rem;
+	line-height: 1.6;
+	color:var(--black);
+}
+
+/* --------------------------------------------------------------------------
+Title and subtitle are contained in red box.
+-------------------------------------------------------------------------- */
+
+body>header {
+	padding-block: calc(2*var(--space));
+	padding-inline: var(--space);
+
+	border-block-end: var(--line) solid var(--black);
+
+	background-color: var(--red);
+	color: var(--white);
+}
+
+.course {
+	font-size: 0.9rem;
+}
+
+h1{
+	margin-block-start: calc(0.8*var(--space));
+	font-size: 4rem;
+	font-weight: bold;
+	line-height: 1;
+	text-transform: uppercase;
+
+	cite{
+		color: var(--yellow);
+	}
+}
+
+/* --------------------------------------------------------------------------
+other letter settings (em, cite, strong, time, mark, references)
+-------------------------------------------------------------------------- */
+
+p {
+	/*ch because it uses letter width (1ch = one letter width) */
+	text-align: justify;
 }
 
 em {
-	color: hsl(355, 90%, 45%);
-	font-family: 'Alpino', sans-serif;
-    font-size: 1.2rem;
+	color: var(--red);
+	font-family: 'Alpino', san-serif;
+	font-size: 1.2;
 	font-weight: 400;
 }
 
 time {
-	color: hsl(48, 71%, 52%);
+	color: var(--yellow);
 }
 
 cite {
-	color: hsl(210, 100%, 32%);
+	color: var(--blue);
 }
 
 strong {
-    font-weight: bold;
+	font-weight: bold;
+	color: var(--red);
+}
+
+mark{
+	background-color: var(--yellow);
+	color: var(--black);
 }
 
 a {
-    color: hsl(210, 100%, 32%);
-    text-decoration: underline;
-    text-decoration-thickness: 0.15em;
-    text-underline-offset: 0.2em;
+	color: var(--blue);
+	text-decoration: underline;
+	text-underline-offset: 0.2rem;
+
+	&:hover {
+		background-color: var(--yellow);
+		color: var(--black);
+	}
 }
 
-a:hover {
-    color: hsl(355, 90%, 45%);
-}
-
-/* --------------------------------------------------------------------------
-   I had a lot of trouble with placing popover at the place that does not
-   block other text. While not in the lesson, I found out about
-   inset & max-width to figure it out. However, I had to test every number
-   manually to see which poisition the popover would actually not block my other
-   texts so I'm wondering if there is a better way to do it.
--------------------------------------------------------------------------- */
-
-button::before {
-    content: '● ●';
-	font-size: 1.5rem;
-    color: hsl(48, 100%, 50%);
-	letter-spacing: 0.25;
-}
-
-button {
-    font-size: 0.8rem;
-    font-weight: bold;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: hsl(355, 90%, 45%);
-}
-
-[popover] {
-    inset: auto 10rem 25rem auto;
-    max-width: 15rem;
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.95rem;
-	line-height: 1.0;
-    color: hsl(355, 90%, 45%);
-}
-
-mark {
-    color: hsl(45, 89%, 58%);
-}
-
-p {
-    margin-bottom: 1.2em;
-    text-align: justify;
+abbr {
+	text-decoration: underline dotted;
 }
 
 /* --------------------------------------------------------------------------
-Experimented with background color to make the webpage closer to my
-design from figma but not sure...
-
-.highlight {
-	background-color: rgb(253, 236, 45);
-}
+subtitle & before you start
 -------------------------------------------------------------------------- */
 
-
-/* --------------------------------------------------------------------------
-   For the 'The Modernist Grid' & 'Appendix' at the end
--------------------------------------------------------------------------- */
-
-h2 {
+h2{
 	font-family: 'Gambarino', serif;
 	font-size: 1.3rem;
-	font-weight:bold;
 	line-height: 2;
-	letter-spacing: -0.02em;
-	color: hsl(48, 100%, 50%);
+	letter-spacing: 0em;
+
+	span {
+		font-family: 'Archivo', sans-serif;
+		font-size: 1rem;
+		font-weight: bold;
+		letter-spacing: 0.1rem;
+	}
 }
 
-h2 span {
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.8rem;
-    font-weight: bold;
-    font-style:normal;
-    letter-spacing: 0.2em;
-    color: hsl(0, 0%, 5%);
-}
+article > header {
+	padding-block: var(--space);
+	padding-inline: var(--space);
+	margin-block: var(--space);
+	border-block: calc(0.8*var(--line)) solid var(--black);
+	background-color: var(--blue);
+	color: var(--white);
 
-/* --------------------------------------------------------------------------
-   Title
-   -------------------------------------------------------------------------- */
+	a {
+		color: var(--yellow);
+	}
 
-h1 {
-    font-size: 4rem;
-    font-weight: bold;
-    line-height: 1;
-    letter-spacing: -0.05em;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-}
-
-h1 cite {
-    font-family: 'Archivo', sans-serif;
-    color: hsl(355, 90%, 45%);
-}
-
-/* Subtitles, inside each hgroup. */
-hgroup p {
-    font-size: 0.8rem;
-    font-weight: bold;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-indent: 0;
-}
-
-.course {
-	text-transform: none;
-	letter-spacing: 0.05em;
+	summary:hover {
+		color: var(--yellow);
+	}
 }
 
 /* --------------------------------------------------------------------------
-   For the article
+Section headings:
+Each heading is inside colored boxes, with rotating color. The little box content
+next to heading also has rotating color (but different from background color)
+
+The first letter of each opening paragraph has a big red letter.
 -------------------------------------------------------------------------- */
 
-h3 + p {
-    margin-top: 1.5rem;
+article>section {
+	padding-inline: var(--space);
 }
 
-h3 + p::first-letter {
-    font-size: 2.5rem;
-    line-height: 1;
-    font-weight: bold;
-    color: hsl(355, 90%, 45%);
+main>section {
+	padding-inline: var(--space);
 }
 
-/* --------------------------------------------------------------------------
-   Section headings
-   A heavy underline stands in for Mondrian’s line but with rotating colour.
--------------------------------------------------------------------------- */
+article>section:nth-of-type(3n+1) h3{
+	background-color: var(--red);
+	color: var(--white);
 
-h3::before {
-    content: '█  ';
+	&::before {
+		color: var(--yellow);
+	}
+}
+
+article>section:nth-of-type(3n+2) h3{
+	background-color: var(--blue);
+	color: var(--white);
+
+	&::before {
+		color: var(--red);
+	}
+}
+
+article>section:nth-of-type(3n+3) h3{
+	background-color: var(--yellow);
+	color: var(--black);
+
+	&::before {
+		color: var(--blue);
+	}
 }
 
 h3 {
-    font-size: 0.85rem;
-    font-weight: bold;
-    line-height: 3;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    text-decoration: underline;
-    text-decoration-thickness: 0.5em;
-    text-underline-offset: 0.8em;
-}
+	margin-block-start: var(--space);
+	margin-inline: -2rem;
+	padding-block: 0.9rem;
+	padding-inline: var(--space);
+	border-block: calc(0.8*var(--line)) solid var(--black);
+	font-size: 0.85rem;
+	font-weight: bold;
+	letter-spacing: 0.25rem;
+	text-transform: uppercase;
 
-.red {
-	color: hsl(355, 90%, 45%);
-}
+	&::before {
+    content: '█  ';
+	}
 
-.blue {
-	color: hsl(210, 100%, 32%);
-}
-
-.yellow {
-	color: hsl(48, 100%, 50%);
+	+p {
+		margin-block-start: var(--space);
+		/* first letter of each paragraph from reading */
+		&::first-letter{
+			font-size: 3.2rem;
+			font-weight: bold;
+			line-height: 1;
+			color: var(--red);
+		}
+	}
 }
 
 /* --------------------------------------------------------------------------
-   My responses
-   Hollis is black. I am blue, and every response is flagged with a yellow bar.
+My responses:
+Hollis is black. I am blue, and every response is a white plane in a black
+frame. The black tag sits inside the frame, with a yellow block in it.
 -------------------------------------------------------------------------- */
 
 aside {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: hsl(210, 100%, 32%);
-}
+	margin-block: var(--space);
+	padding-block: var(--space);
+	padding-inline: var(--space);
+	border: calc(0.8*var(--line)) solid var(--black);
+	background-color: var(--white);
+	color: var(--blue);
+	font-size: 0.95rem;
+	line-height: 1.5;
 
-aside h4::before {
-    content: '█   ';
-    color: hsl(48, 100%, 50%);
-    letter-spacing: 0.25;
-}
+	h4{
+		font-size: 0.85rem;
+		font-weight: bold;
+		letter-spacing: 0.15rem;
+		text-transform: uppercase;
 
-aside h4 {
-    font-size: 0.95rem;
-    font-weight: bold;
-    line-height: 3;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: hsl(210, 100%, 32%);
-}
-
-aside em,
-aside strong {
-    color: hsl(355, 90%, 45%);
+		&::before {
+			content: '█   ';
+    		letter-spacing: 0.25;
+			color: var(--yellow);
+		}
+	}
 }
 
 /* --------------------------------------------------------------------------
-   For the quotes, decided to experiment with red ""
+Blockquote is accented with big red quotation mark and also
+yellow background block.
 -------------------------------------------------------------------------- */
 
 blockquote {
-    font-size: 1.6rem;
-    font-weight: bold;
-    line-height: 1.25;
+	display: block;
+	background-color: var(--yellow);
+	padding-block: var(--space);
+	padding-inline: 3rem;
+	font-size: 1.3rem;
+	font-weight: bold;
+	line-height: 1.25;
 }
 
 blockquote p::before {
-    content: '“';
-    color: hsl(355, 90%, 45%);
+    content: '“ ';
+    color: var(--red);
 }
 
 blockquote p::after {
-    content: '”';
-    color: hsl(355, 90%, 45%);
+    content: ' ”';
+    color: var(--red);
 }
 
 blockquote p:last-child::before,
@@ -260,68 +294,120 @@ blockquote p:last-child::after {
 }
 
 blockquote cite {
-    font-size: 1rem;
-	font-family: 'Cormorant Garmond', serif;
+    font-size: 1.2rem;
+	font-family: 'Cormorant Garamond', serif;
 	text-align: middle;
-    color: hsl(0, 0%, 0%);
+    color: var(--blue);
 }
 
 /* --------------------------------------------------------------------------
-   Details
+Popover
 -------------------------------------------------------------------------- */
 
 details {
+	margin-inlne: 1rem;
+	padding-block: var(--space--s);
+	font-size: 0.95rem;
+
+	summary{
+		font-size: 0.85rem;
+		font-weight: bold;
+		line-height: 3;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+
+		&::before {
+			content: '█   ';
+    		letter-spacing: 0.25;
+			color: var(--red);
+		}
+
+		&:hover {
+			color: var(--red);
+		}
+	}
+}
+
+button::before {
+    content: '█ █  ';
+	font-size: 0.85rem;
+    color: var(--yellow);
+	letter-spacing: 0.25;
+}
+
+button {
     font-size: 0.95rem;
-}
-
-summary {
-    font-size: 0.85rem;
-    font-weight: bold;
-    line-height: 3;
+	font: 'Cormorant Garamond', serif;
     letter-spacing: 0.2em;
-    text-transform: uppercase;
+    color: var(--white);
+
+	&:hover {
+			background-color: var(--red);
+			color: var(--white);
+		}
 }
 
-summary:hover {
-    color: hsl(355, 90%, 45%);
+[popover] {
+	position:fixed;
+	inset: auto;
+	margin: 29rem 47rem;
+	inline-size: 22rem;
+	padding: calc(0.5*var(--space));
+	border: calc(0.7*var(--line)) solid var(--black);
+	background-color: var(--white);
+	color: var(--black);
+	font-size: 0.95rem;
+	line-height: 1.0;
+}
+
+dfn{
+	font:bold;
 }
 
 /* --------------------------------------------------------------------------
-   Appendix lists
+Appendix
 -------------------------------------------------------------------------- */
+
+main >section{
+	margin-block-start: calc(0.1*var(--space));
+	padding-block-start: var(--space);
+	border-block-start: var(--line) solid var(--black);
+}
 
 dt {
     font-weight: bold;
-    line-height: 2.2;
+    line-height: 1;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    color: hsl(355, 90%, 45%);
+    font-size: 0.85rem;
+    color: var(--red);
 }
 
 dd {
+	margin-block-start: 0.5rem;
     font-size: 0.95rem;
 }
 
-li {
-    line-height: 1.9;
-}
-
 /* --------------------------------------------------------------------------
-   Footer
+Footer is contained in black box.
 -------------------------------------------------------------------------- */
 
-footer {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: hsl(0, 0%, 40%);
-}
+footer{
+	margin-block-start: calc(0.8*var(--space));
+	padding-block: 1rem;
+	padding-inline: var(--space);
+	background-color: var(--black);
+	color: var(--white);
+	font-size: 0.8rem;
+	text-transform: uppercase;
 
-footer a {
-    color: hsl(355, 90%, 45%);
-}
+	p{
+		text-align: start;
+	}
 
-abbr {
-    text-decoration: underline;
+	a{
+		display: inline-block;
+		margin-block-start: calc(0.8*var(--space));
+		color: var(--yellow);
+	}
 }
