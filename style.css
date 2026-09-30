@@ -79,6 +79,14 @@ h1{
 	}
 }
 
+h1 + p {
+	font-size: 1.3rem;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	text-align: start;
+}
+
 /* --------------------------------------------------------------------------
 other letter settings (em, cite, strong, time, mark, references)
 -------------------------------------------------------------------------- */
