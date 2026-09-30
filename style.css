@@ -360,7 +360,7 @@ button {
 [popover] {
 	position:fixed;
 	inset: auto;
-	margin: 29rem 47rem;
+	margin: 32.2rem 46.9rem;
 	inline-size: 22rem;
 	padding: calc(0.5*var(--space));
 	border: calc(0.7*var(--line)) solid var(--black);
