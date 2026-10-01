@@ -1,12 +1,47 @@
-<!--
-This file provides context/instruction for your repository! They are written in Markdown (.md), for simple formatting:
-https://www.markdownguide.org/cheat-sheet/
--->
+# The Modernist Grid: A Mondrian-Inspired HTML/CSS Study
 
-# Project 1: *Manuscript*
+Typography & Interaction, Project 1 (2026-2027)
+Text by Richard Hollis. Response by Jun Park.
 
-Demo/template for our [first projects](https://typography-interaction-2627.github.io/project/1/).
+## About the project
 
-> **Students will choose a seminal design text from [readings.design](https://readings.design), read and respond to it, and typeset their selection and reply together.**
->
-> The goal of this project is to hone your basic skills in typography, focusing on expression, hierarchy, and form appropriate to a work. You will do this through exploration, trial and error, and responding to critical feedback. And then you will execute this typesetting in code, as a web page
+An HTML/CSS reading of Richard Hollis's essay "The Modernist Grid,"
+styled around Mondrian and De Stijl. The page contains Hollis's text, my
+own written responses, a popover, collapsible `<details>` sections
+(a glossary and a references list), and an appendix.
+
+**Live site:** [link]
+
+## Design idea
+
+Color goes in background. Mondrian never painted yellow lines of
+writing. He painted colored rectangles bounded by black lines. So all text
+is black or blue on white, and red, yellow and blue appear only as blocks
+built from the box model:
+
+## Reading
+
+- Richard Hollis, ["The Modernist Grid"](https://www.readingdesign.org/modernist-grid)
+
+The part I liked most was Hollis comparing Mondrian and Mies. Mondrian
+chose his rectangles by eye, and Mies's came from how the building
+stands up. I studied architecture, and I had never thought of the grid
+as design until this reading.
+
+## How I made it
+
+I used the box model to make the Mondrian look. Borders are the black
+lines, and red, yellow and blue only show up as colored blocks. Text
+stays black or blue on white so it's readable (except for the parts I wanted to emphasis)
+
+## Notes
+
+- Yellow text on white was too hard to read, so I had to change it to different shade of yellow for time.
+- Get HTML structure done first before moving to CSS.
+- Download fonts locally.
+- The popover can't be positioned with margin or padding. 
+
+## Files
+
+- `index.html`
+- `style.css`=
