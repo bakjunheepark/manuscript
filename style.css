@@ -51,7 +51,9 @@ body{
 	margin-inline: auto;
 
 	/* thick lining like Mondrian style */
-	border-inline: var(--line)solid var(--black);
+	border-inline-width: var(--line);
+	border-inline-style: solid;
+	border-inline-color: var(--black);
 
 	background-color: var(--white);
 	font-family: 'Archivo', sans-serif;
@@ -478,8 +480,7 @@ dd {
 	font-size: 0.95rem;
 }
 
-dd + dt,
-li + li {
+dd + dt,li + li {
 	margin-block-start: var(--pg);
 }
 
@@ -513,11 +514,9 @@ footer{
 	p{
 		text-align: start;
 		font-size: 0.8rem;
-
 	}
 
 	a{
-		display: inline-block;
 		margin-block-start: calc(0.8*var(--space));
 		color: var(--yellow);
 	}
