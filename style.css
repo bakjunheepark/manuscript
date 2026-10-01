@@ -1,17 +1,25 @@
 /* --------------------------------------------------------------------------
-Feedback: Units: rem for font sizes and page-level spacing (same value everywhere).
+CONCEPT
+This page styles Richard Hollis's "The Modernist Grid" in the language of
+Functionalist / Mondrian: a white ground, heavy black lines, and flat planes of
+red, yellow, and blue. Using aesthetics of Mondrian yet legible
+
+	red    = the title, and emphasis inside Hollis's text
+	blue   = my voice (responses) and sources (citations, links)
+	yellow = highlights and the quote
+	black  = structure (lines, footer)
+
+The irony: Hollis says Mondrian's rectangles are purely aesthetic, not
+structural like a grid, so styling his essay this way contradicts the text..
+
+UNITS
+rem for font sizes and page-level spacing (same value everywhere).
 em for things that should scale with their own text: letter-spacing,
 underlines, paragraph spacing.
-
-More closer to Mondrian style as boxing is applied: a white ground, heavy black
-lines, and flat planes of red, yellow, and blue.
-
-The irony: Hollis says Mondrian's rectangles are purely aesthetic, not structural like a grid,
-so this styling is a contradiction of the text...
 -------------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------------
-Roots: setting colors, line, spacing
+Roots
 -------------------------------------------------------------------------- */
 
 :root {
@@ -25,21 +33,24 @@ Roots: setting colors, line, spacing
 	--line: 0.6rem;
 
 	--space: 2rem;
+
+	/* pg = paragraph gap */
+	--pg: 1.2rem;
 }
 
-*+*{
-	margin-block-start: 1.2rem;
-}
+/* --------------------------------------------------------------------------
+Page setup: centered text, framed by two thick black lines like the
+Mondrian painting.
 
-/* The body has margin set (only left and rihgt) with black lines on both sides
-Setting it back to 0 lets the red title start at the very top. */
+The body's top margin is set to 0 so the red title starts at the very top.
+-------------------------------------------------------------------------- */
 
 body{
 	inline-size: 46rem;
 	margin-block-start: 0;
 	margin-inline: auto;
 
-	/* thick lining like Mondrain style */
+	/* thick lining like Mondrian style */
 	border-inline: var(--line)solid var(--black);
 
 	background-color: var(--white);
@@ -50,7 +61,7 @@ body{
 }
 
 /* --------------------------------------------------------------------------
-Title and subtitle are contained in red box.
+Title: largest red color box
 -------------------------------------------------------------------------- */
 
 body>header {
@@ -61,6 +72,14 @@ body>header {
 
 	background-color: var(--red);
 	color: var(--white);
+
+	> * + * {
+		margin-block-start: var(--pg);
+	}
+
+	> h1 {
+		margin-block-start: calc(0.8*var(--space));
+	}
 }
 
 .course {
@@ -68,7 +87,6 @@ body>header {
 }
 
 h1{
-	margin-block-start: calc(0.8*var(--space));
 	font-size: 4rem;
 	font-weight: bold;
 	line-height: 1;
@@ -76,15 +94,18 @@ h1{
 
 	cite{
 		color: var(--yellow);
+		font-style: normal;
 	}
 }
 
 h1 + p {
-	font-size: 1.3rem;
+	font-family: 'Switzer', sans-serif;
+	font-size: 1.4rem;
 	font-weight: bold;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	text-align: start;
+	color: var(--white);
 }
 
 /* --------------------------------------------------------------------------
@@ -92,19 +113,21 @@ other letter settings (em, cite, strong, time, mark, references)
 -------------------------------------------------------------------------- */
 
 p {
-	/*ch because it uses letter width (1ch = one letter width) */
+	/* justified, so paragraphs read as solid rectangles, like the planes */
 	text-align: justify;
+	font-size: 1.1rem;
 }
 
 em {
 	color: var(--red);
-	font-family: 'Alpino', san-serif;
+	font-style: normal;
+	font-family: 'Satoshi', sans-serif;
 	font-size: 1.2;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 time {
-	color: var(--yellow);
+	color: hsl(48, 90%, 49%);
 }
 
 cite {
@@ -126,6 +149,7 @@ a {
 	text-decoration: underline;
 	text-underline-offset: 0.2rem;
 
+	/* on hover, the link becomes a small yellow plane */
 	&:hover {
 		background-color: var(--yellow);
 		color: var(--black);
@@ -137,24 +161,36 @@ abbr {
 }
 
 /* --------------------------------------------------------------------------
-subtitle & before you start
+Essay title & "Before you start"
+
+The essay title is the only serif (Sentient); wanted to differentiate as
+the title was repeated
+
+The blue box is the entry: the title, the source, and the
+"Before you start" notes.
+
+header position: relative so the Gridnik
+definition can be placed against its edges.
 -------------------------------------------------------------------------- */
 
 h2{
-	font-family: 'Gambarino', serif;
-	font-size: 1.3rem;
+	font-family: 'Sentient', serif;
+	font-weight: 500;
+	color: var(--yellow);
+	font-size: 1.4rem;
 	line-height: 2;
 	letter-spacing: 0em;
 
 	span {
 		font-family: 'Archivo', sans-serif;
+		color: var(--white);
 		font-size: 1rem;
-		font-weight: bold;
 		letter-spacing: 0.1rem;
 	}
 }
 
 article > header {
+	position:relative;
 	padding-block: var(--space);
 	padding-inline: var(--space);
 	margin-block: var(--space);
@@ -162,29 +198,45 @@ article > header {
 	background-color: var(--blue);
 	color: var(--white);
 
+	> * + * {
+		margin-block-start: var(--pg);
+	}
+
 	a {
 		color: var(--yellow);
 	}
 
 	summary:hover {
+		display: block;
 		color: var(--yellow);
 	}
 }
 
 /* --------------------------------------------------------------------------
 Section headings:
-Each heading is inside colored boxes, with rotating color. The little box content
-next to heading also has rotating color (but different from background color)
+Each heading is a colored bar. The colors rotate red, blue, yellow
+(nth-of-type 3n), so the page builds a repeating rhythm of planes.
 
-The first letter of each opening paragraph has a big red letter.
+The small block before each heading uses a different color from its bar.
+
+The negative inline margin cancels the section padding, so each bar
+stretches all the way to the black side lines.
+
+The first letter of each opening paragraph is a big red letter.
 -------------------------------------------------------------------------- */
 
 article>section {
 	padding-inline: var(--space);
-}
 
-main>section {
-	padding-inline: var(--space);
+	> * + * {
+		margin-block-start: var(--pg);
+	}
+
+	> h3 + p,
+	> aside,
+	> blockquote {
+		margin-block-start: var(--space);
+	}
 }
 
 article>section:nth-of-type(3n+1) h3{
@@ -216,21 +268,21 @@ article>section:nth-of-type(3n+3) h3{
 
 h3 {
 	margin-block-start: var(--space);
-	margin-inline: -2rem;
+	/* cancels the section padding, so the bar reaches the black side lines */
+	margin-inline: calc(-1*var(--space));
 	padding-block: 0.9rem;
 	padding-inline: var(--space);
 	border-block: calc(0.8*var(--line)) solid var(--black);
-	font-size: 0.85rem;
+	font-size: 1.1rem;
 	font-weight: bold;
-	letter-spacing: 0.25rem;
+	letter-spacing: 0.15rem;
 	text-transform: uppercase;
 
 	&::before {
-	content: '█  ';
+		content: '█  ';
 	}
 
 	+p {
-		margin-block-start: var(--space);
 		/* first letter of each paragraph from reading */
 		&::first-letter{
 			font-size: 3.2rem;
@@ -243,8 +295,10 @@ h3 {
 
 /* --------------------------------------------------------------------------
 My responses:
-Hollis is black. I am blue, and every response is a white plane in a black
-frame. The black tag sits inside the frame, with a yellow block in it.
+Hollis is black text on white. I am white text in blue box.
+
+The yellow block marks the "My response" label, and emphasis inside my
+responses turns yellow instead of red.
 -------------------------------------------------------------------------- */
 
 aside {
@@ -252,13 +306,27 @@ aside {
 	padding-block: var(--space);
 	padding-inline: var(--space);
 	border: calc(0.8*var(--line)) solid var(--black);
-	background-color: var(--white);
-	color: var(--blue);
-	font-size: 0.95rem;
+	background-color: var(--blue);
+	color: var(--white);
+	font-size: 1 rem;
 	line-height: 1.5;
 
+	> * + * {
+		margin-block-start: var(--pg);
+	}
+
+	em{
+			color: var(--yellow);
+		}
+
 	h4{
-		font-size: 0.85rem;
+
+		/* the label sits close to the text it introduces: half a --space */
+		+ p {
+			margin-block-start: calc(0.5*var(--space));
+		}
+
+		font-size: 1rem;
 		font-weight: bold;
 		letter-spacing: 0.15rem;
 		text-transform: uppercase;
@@ -272,20 +340,25 @@ aside {
 }
 
 /* --------------------------------------------------------------------------
-Blockquote is accented with big red quotation mark and also
-yellow background block.
+Blockquote: a yellow plane with red quotation marks.
+The marks are added with ::before / ::after, and removed from the last
+paragraph, which holds the citation instead of quoted text.
 -------------------------------------------------------------------------- */
 
 blockquote {
 	padding-block: var(--space);
 	padding-inline: calc(1.5 * var(--space));
 	background-color: var(--yellow);
-	font-size: 1.3rem;
-	font-weight: bold;
-	line-height: 1.25;
+
+	> * + * {
+		margin-block-start: var(--pg);
+	}
 
 	p {
 		text-align: start;
+		font-size: 1.3rem;
+		font-weight: bold;
+		line-height: 1.25;
 	}
 
 	p::before {
@@ -304,23 +377,31 @@ blockquote {
 	}
 
 	cite {
-		font-family: 'Cormorant Garamond', serif;
-		font-size: 1.2rem;
+		font-family: 'Sentient', serif;
+		font-weight: 400;
+		font-size: 1.1rem;
 		color: var(--blue);
 	}
 }
 
 /* --------------------------------------------------------------------------
-Popover
+Details (Before you start, appendix lists) and the Gridnik definition
+
+display: block on summary removes the browser's default triangle,
+so the colored block is the only marker. Hover changes the color to show
+it can be clicked.
 -------------------------------------------------------------------------- */
 
 details {
-	margin-inlne: 1rem;
-	padding-block: var(--space--s);
-	font-size: 0.95rem;
+	font-size: 1rem;
+
+	> * + * {
+		margin-block-start: var(--pg);
+	}
 
 	summary{
-		font-size: 0.85rem;
+		display: block;
+		font-size: 1rem;
 		font-weight: bold;
 		line-height: 3;
 		letter-spacing: 0.2em;
@@ -338,50 +419,54 @@ details {
 	}
 }
 
-button::before {
-	content: '█ █  ';
-	font-size: 0.85rem;
-	color: var(--yellow);
-	letter-spacing: 0.25;
-}
+/* The Gridnik definition opens as a small white plane in a black frame.
+It is position: absolute against the blue box (which is position: relative).
+The negative insets push its frame onto the blue box's bottom line and
+the page's black side line, so the lines overlap instead of doubling up. */
 
-button {
-	font-size: 0.95rem;
-	font: 'Cormorant Garamond', serif;
-	letter-spacing: 0.2em;
-	color: var(--white);
-
-	&:hover {
-			background-color: var(--red);
-			color: var(--white);
-		}
-}
-
-[popover] {
-	position:fixed;
-	inset: auto;
-	margin: 32.2rem 46.9rem;
-	inline-size: 22rem;
-	padding: calc(0.5*var(--space));
-	border: calc(0.7*var(--line)) solid var(--black);
+.gridnik p {
+	position: absolute;
+	margin: 0;
+	inset-block-end: calc(-0.7 * var(--line));
+	inset-inline-end: calc(-1 * var(--line));
+	inline-size: 20rem;
+	padding: calc(0.7 * var(--space));
+	border: calc(0.8 * var(--line)) solid var(--black);
 	background-color: var(--white);
 	color: var(--black);
-	font-size: 0.95rem;
-	line-height: 1.0;
+	font-size: 0.9rem;
+	line-height: 1.4;
+	text-align: start;
+}
+
+/* two yellow blocks, to set the Gridnik link apart from "Before you start" */
+.gridnik summary::before {
+	display: block;
+	content: '█ █  ';
+	color: var(--yellow);
 }
 
 dfn{
-	font:bold;
+	font-weight:700;
+	font-size: 1rem;
+	color: var(--blue);
 }
 
 /* --------------------------------------------------------------------------
-Appendix
+Appendix: separated from the essay by black line.
+
+details separated by red bold title and black description
 -------------------------------------------------------------------------- */
 
 main >section{
 	margin-block-start: calc(0.1*var(--space));
 	padding-block-start: var(--space);
+	padding-inline: var(--space);
 	border-block-start: var(--line) solid var(--black);
+
+	> * + * {
+		margin-block-start: var(--pg);
+	}
 }
 
 dt {
@@ -395,11 +480,27 @@ dt {
 
 dd {
 	margin-block-start: 0.5rem;
+	margin-inline-start: 0;
 	font-size: 0.95rem;
 }
 
+dd + dt,
+li + li {
+	margin-block-start: var(--pg);
+}
+
+section>h2{
+	font-family: 'Switzer', sans-serif;
+	font-size: 1.3rem;
+	color: var(--black);
+	font-weight: bold;
+	letter-spacing: 0.15rem;
+	text-transform: uppercase;
+
+}
+
 /* --------------------------------------------------------------------------
-Footer is contained in black box.
+Footer: black box, top hovers with highlight
 -------------------------------------------------------------------------- */
 
 footer{
@@ -408,11 +509,17 @@ footer{
 	padding-inline: var(--space);
 	background-color: var(--black);
 	color: var(--white);
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	text-transform: uppercase;
+
+	> * + * {
+		margin-block-start: var(--pg);
+	}
 
 	p{
 		text-align: start;
+		font-size: 0.8rem;
+
 	}
 
 	a{
