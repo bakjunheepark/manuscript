@@ -65,7 +65,7 @@ Title: largest red color box
 -------------------------------------------------------------------------- */
 
 body>header {
-	padding-block: calc(2*var(--space));
+	padding-block: calc(1.2*var(--space));
 	padding-inline: var(--space);
 
 	border-block-end: var(--line) solid var(--black);
@@ -136,12 +136,7 @@ cite {
 
 strong {
 	font-weight: bold;
-	color: var(--red);
-}
-
-mark{
-	background-color: var(--yellow);
-	color: var(--black);
+	color: var(--yellow);
 }
 
 a {
@@ -191,7 +186,7 @@ h2{
 
 article > header {
 	position:relative;
-	padding-block: var(--space);
+	padding-block: calc(0.5*var(--space));
 	padding-inline: var(--space);
 	margin-block: var(--space);
 	border-block: calc(0.8*var(--line)) solid var(--black);
@@ -429,7 +424,7 @@ the page's black side line, so the lines overlap instead of doubling up. */
 	margin: 0;
 	inset-block-end: calc(-0.7 * var(--line));
 	inset-inline-end: calc(-1 * var(--line));
-	inline-size: 20rem;
+	inline-size: 18rem;
 	padding: calc(0.7 * var(--space));
 	border: calc(0.8 * var(--line)) solid var(--black);
 	background-color: var(--white);
@@ -441,7 +436,6 @@ the page's black side line, so the lines overlap instead of doubling up. */
 
 /* two yellow blocks, to set the Gridnik link apart from "Before you start" */
 .gridnik summary::before {
-	display: block;
 	content: '█ █  ';
 	color: var(--yellow);
 }
