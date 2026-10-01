@@ -6,9 +6,7 @@ Text by Richard Hollis. Response by Jun Park.
 ## About the project
 
 An HTML/CSS reading of Richard Hollis's essay "The Modernist Grid,"
-styled around Mondrian and De Stijl. The page contains Hollis's text, my
-own written responses, a popover, collapsible `<details>` sections
-(a glossary and a references list), and an appendix.
+styled around Mondrian and functions like Mies. 
 
 **Live site:** [link]
 
@@ -17,7 +15,7 @@ own written responses, a popover, collapsible `<details>` sections
 Color goes in background. Mondrian never painted yellow lines of
 writing. He painted colored rectangles bounded by black lines. So all text
 is black or blue on white, and red, yellow and blue appear only as blocks
-built from the box model:
+built from the box model.
 
 ## Reading
 
